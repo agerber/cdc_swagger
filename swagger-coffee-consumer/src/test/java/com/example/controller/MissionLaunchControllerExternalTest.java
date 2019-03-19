@@ -26,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
+//todo the id's are differnet.
 @AutoConfigureStubRunner(stubsMode = StubRunnerProperties.StubsMode.LOCAL, ids = "blog.svenbayer:swagger-coffee-contracts:+:stubs")
 @DirtiesContext
 public class MissionLaunchControllerExternalTest extends AbstractContractTest {
@@ -39,6 +40,7 @@ public class MissionLaunchControllerExternalTest extends AbstractContractTest {
     @Autowired
     private CoffeeProducerSettings coffeeProducerSettings;
 
+    //todo the port is dfferent
     @StubRunnerPort("swagger-coffee-contracts")
     int producerPort;
 

@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.BeanPlanet;
+import com.example.model.Beanonaut;
 import com.example.model.CoffeeRocket;
 import com.example.service.CoffeeverseService;
 import com.example.service.RateLimitService;
@@ -41,4 +42,17 @@ public class CoffeeverseController {
         BeanPlanet beanPlanet = coffeeverseService.takeoff(coffeeRocket, withWormhole, viaHyperLoop, requestId);
         return new ResponseEntity<>(beanPlanet, headers, HttpStatus.CREATED);
     }
+
+
+
+    @GetMapping(value = "/fillup", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Beanonaut> fillup() {
+        HttpHeaders headers = new HttpHeaders();
+
+        int rateLimit = rateLimitService.getRateLimit();
+        headers.add("X-RateLimit-Limit", String.valueOf(rateLimit));
+       // BeanPlanet beanPlanet = coffeeverseService.takeoff(coffeeRocket, withWormhole, viaHyperLoop, requestId);
+        return new ResponseEntity<>(new Beanonaut(), headers, HttpStatus.CREATED);
+    }
 }
+
