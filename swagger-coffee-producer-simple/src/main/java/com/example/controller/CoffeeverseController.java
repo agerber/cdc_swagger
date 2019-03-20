@@ -46,13 +46,19 @@ public class CoffeeverseController {
 
 
     @GetMapping(value = "/fillup", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Beanonaut> fillup() {
+    public ResponseEntity<Integer>  fillup() {
         HttpHeaders headers = new HttpHeaders();
 
         int rateLimit = rateLimitService.getRateLimit();
         headers.add("X-RateLimit-Limit", String.valueOf(rateLimit));
        // BeanPlanet beanPlanet = coffeeverseService.takeoff(coffeeRocket, withWormhole, viaHyperLoop, requestId);
-        return new ResponseEntity<>(new Beanonaut(), headers, HttpStatus.CREATED);
+        return new ResponseEntity<Integer>(1, headers, HttpStatus.CREATED);
+    }
+
+
+    @GetMapping("/home")
+    public String homeInit() {
+        return "home";
     }
 }
 
